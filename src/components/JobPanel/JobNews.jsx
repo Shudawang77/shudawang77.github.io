@@ -13,7 +13,7 @@ const TYPE_COLORS = {
 
 const JobNews = () => {
   const [news, setNews] = useState(() => {
-    const saved = localStorage.getItem('tj_job_news_v5')
+    const saved = localStorage.getItem('tj_job_news_v6')
     return saved ? JSON.parse(saved) : SEED_NEWS
   })
   const [filter, setFilter] = useState('全部')
@@ -21,7 +21,7 @@ const JobNews = () => {
   const [form, setForm] = useState({ company: '', type: '互联网', title: '', url: '' })
 
   useEffect(() => {
-    localStorage.setItem('tj_job_news_v5', JSON.stringify(news))
+    localStorage.setItem('tj_job_news_v6', JSON.stringify(news))
   }, [news])
 
   const openLink = (url) => {
@@ -46,7 +46,7 @@ const JobNews = () => {
   }
 
   const delNews = (id) => setNews(news.filter(n => n.id !== id))
-  const restore = () => { setNews(SEED_NEWS); localStorage.setItem('tj_job_news_v4', JSON.stringify(SEED_NEWS)) }
+  const restore = () => { setNews(SEED_NEWS); localStorage.setItem('tj_job_news_v6', JSON.stringify(SEED_NEWS)) }
 
   const filtered = filter === '全部' ? news : news.filter(n => n.type === filter)
 
